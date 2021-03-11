@@ -1,18 +1,97 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Room, Listeners, Speakers} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
   const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+    User.create({
+      name: 'Jamie Eunice',
+      email: 'cody@email.com',
+      password: '123',
+      username: 'jeimiyuniseu',
+      profilePicture:
+        'https://media-exp1.licdn.com/dms/image/C4E03AQGr2JhwHUAbXg/profile-displayphoto-shrink_400_400/0/1593014512052?e=1619654400&v=beta&t=md-8FwRQqKxWwMj259C9iOXYBHycHeBp94YqDEvQPTI',
+      website: 'google.com',
+      bio:
+        'ᨏ☼ isleña puerto rico \n full-stack software engineer \n aussie mom kyloanddrogo'
+    }),
+    User.create({
+      name: 'Murphy Cesar',
+      email: 'murphy@email.com',
+      password: '123',
+      username: 'morphedbutterfly',
+      profilePicture:
+        'https://www.vippng.com/png/detail/363-3631840_profile-icon-png-profile-icon-png-white-transparent.png',
+      website: 'google.com',
+      bio: 'Friendly gal.'
+    })
   ])
 
-  console.log(`seeded ${users.length} users`)
+  const rooms = await Promise.all([
+    Room.create({
+      title: 'The Ways of Entrepreneurship',
+      description: 'Come listen fellow creative and hard working minds.',
+      userId: 1
+    }),
+    Room.create({
+      title: 'Value in todays world',
+      description: 'Bloom like a butterfly, the time is now.',
+      userId: 2
+    })
+  ])
+
+  const listeners = await Promise.all([
+    Listeners.create({
+      name: 'Jamie Eunice',
+      email: 'cody@email.com',
+      password: '123',
+      username: 'jeimiyuniseu',
+      profilePicture:
+        'https://media-exp1.licdn.com/dms/image/C4E03AQGr2JhwHUAbXg/profile-displayphoto-shrink_400_400/0/1593014512052?e=1619654400&v=beta&t=md-8FwRQqKxWwMj259C9iOXYBHycHeBp94YqDEvQPTI',
+      website: 'google.com',
+      bio:
+        'ᨏ☼ isleña puerto rico \n full-stack software engineer \n aussie mom kyloanddrogo'
+    }),
+    Listeners.create({
+      name: 'Murphy Cesar',
+      email: 'murphy@email.com',
+      password: '123',
+      username: 'morphedbutterfly',
+      profilePicture:
+        'https://www.vippng.com/png/detail/363-3631840_profile-icon-png-profile-icon-png-white-transparent.png',
+      website: 'google.com',
+      bio: 'Friendly gal.'
+    })
+  ])
+
+  const speakers = await Promise.all([
+    Speakers.create({
+      name: 'Jamie Eunice',
+      email: 'cody@email.com',
+      password: '123',
+      username: 'jeimiyuniseu',
+      profilePicture:
+        'https://media-exp1.licdn.com/dms/image/C4E03AQGr2JhwHUAbXg/profile-displayphoto-shrink_400_400/0/1593014512052?e=1619654400&v=beta&t=md-8FwRQqKxWwMj259C9iOXYBHycHeBp94YqDEvQPTI',
+      website: 'google.com',
+      bio:
+        'ᨏ☼ isleña puerto rico \n full-stack software engineer \n aussie mom kyloanddrogo'
+    }),
+    Speakers.create({
+      name: 'Murphy Cesar',
+      email: 'murphy@email.com',
+      password: '123',
+      username: 'morphedbutterfly',
+      profilePicture:
+        'https://www.vippng.com/png/detail/363-3631840_profile-icon-png-profile-icon-png-white-transparent.png',
+      website: 'google.com',
+      bio: 'Friendly gal.'
+    })
+  ])
+
   console.log(`seeded successfully`)
 }
 

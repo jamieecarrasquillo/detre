@@ -1,5 +1,17 @@
+:root {
+  --logo: #f45d48;
+  --background: #f8f5f2;
+  --headline: #232323;
+  --paragraph: #222525;
+  --buttons: #078080;
+  --buttons-text: #ffffff;
+  --ilustration-background: #fffffe;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: Roboto;
+  margin: 0px;
+  background: var(--background);
 }
 
 a {
@@ -10,12 +22,7 @@ label {
   display: block;
 }
 
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
-form div {
-  margin: 1em;
-  display: inline-block;
+* {
+  margin: 0;
+  padding: 0;
 }

@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --logo: #f45d48;
+  --background: #f8f5f2;
+  --headline: #232323;
+  --paragraph: #222525;
+  --buttons: #078080;
+  --buttons-text: #ffffff;
+  --ilustration-background: #fffffe;
+}
+
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: var(--ilustration-background);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 2px;
+  height: 60px;
+}
+
+.navbar-container h1 {
+  margin-left: 30px;
+  color: var(--logo);
+}
+
+.search-icon {
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.empty-space {
+  flex: 1;
+}
+
+.profile-icon {
+  margin-right: 30px;
+  cursor: pointer;
+  margin-top: 5px;
+  position: relative;
+  display: inline-block;
+}
+
+.profile-icon img {
+  border-radius: 25px !important;
+}
+
+.profile-icon button {
+  padding: 0;
+  width: 50px;
+  border: 0;
+  background-color: var(--ilustration-background);
+  color: var(--headline);
+  cursor: pointer;
+  outline: 0;
+  border-radius: 1px;
+}
+
+.profile-icon .dropdown {
+  position: absolute;
+  top: 100%;
+  left: -155px;
+  width: 200px;
+  z-index: 2;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background-color: var(--ilustration-background);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+li {
+  padding: 8px 12px;
+}
+
+li:hover {
+  background-color: rgba(0, 0, 0, 0.14);
+  cursor: pointer;
+}
+
+.link {
+  color: var(--headline);
+}
+
+.logout-button {
+  color: var(--headline);
+  border-radius: 1px;
+}
+
+/* Tablet and Mobile Settings */
+@media (max-width: 500px) {
+}
+@media (max-width: 768px) {
+}

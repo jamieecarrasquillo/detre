@@ -2,7 +2,7 @@ const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const User = db.define('user', {
+const Listeners = db.define('listeners', {
   name: {
     type: Sequelize.STRING,
     allowNull: true
@@ -52,23 +52,25 @@ const User = db.define('user', {
   }
 })
 
-module.exports = User
+module.exports = Listeners
 
 /**
  * instanceMethods
  */
-User.prototype.correctPassword = function(candidatePwd) {
-  return User.encryptPassword(candidatePwd, this.salt()) === this.password()
+Listeners.prototype.correctPassword = function(candidatePwd) {
+  return (
+    Listeners.encryptPassword(candidatePwd, this.salt()) === this.password()
+  )
 }
 
 /**
  * classMethods
  */
-User.generateSalt = function() {
+Listeners.generateSalt = function() {
   return crypto.randomBytes(16).toString('base64')
 }
 
-User.encryptPassword = function(plainText, salt) {
+Listeners.encryptPassword = function(plainText, salt) {
   return crypto
     .createHash('RSA-SHA256')
     .update(plainText)
@@ -79,15 +81,18 @@ User.encryptPassword = function(plainText, salt) {
 /**
  * hooks
  */
-const setSaltAndPassword = user => {
-  if (user.changed('password')) {
-    user.salt = User.generateSalt()
-    user.password = User.encryptPassword(user.password(), user.salt())
+const setSaltAndPassword = listener => {
+  if (listener.changed('password')) {
+    listener.salt = Listeners.generateSalt()
+    listener.password = Listeners.encryptPassword(
+      listener.password(),
+      listener.salt()
+    )
   }
 }
 
-User.beforeCreate(setSaltAndPassword)
-User.beforeUpdate(setSaltAndPassword)
-User.beforeBulkCreate(users => {
-  users.forEach(setSaltAndPassword)
+Listeners.beforeCreate(setSaltAndPassword)
+Listeners.beforeUpdate(setSaltAndPassword)
+Listeners.beforeBulkCreate(listeners => {
+  listeners.forEach(setSaltAndPassword)
 })
