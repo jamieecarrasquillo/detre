@@ -81,8 +81,8 @@
 
 .single-room-header img {
   border-radius: 45px !important;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   margin-left: 5%;
   margin-right: 5%;
 }
@@ -114,20 +114,46 @@
   margin-top: 30px;
 }
 
+.single-room-speakers h5 {
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 8px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 16px;
+  color: #c5c5c5;
+}
+
 .single-room-speakers img {
   border-radius: 45px !important;
-  width: 50px;
-  height: 50px;
-  margin-left: 5%;
-  margin-right: 5%;
+  width: 40px;
+  height: 40px;
+  margin-left: 8%;
+  margin-right: 8%;
   flex-direction: row;
+  margin-bottom: 8px;
 }
 
 .single-room-listeners img {
   border-radius: 45px !important;
-  width: 50px;
-  height: 50px;
-  margin-left: 5%;
-  margin-right: 5%;
+  width: 40px;
+  height: 40px;
+  margin-left: 8%;
+  margin-right: 8%;
   flex-direction: row;
+  margin-bottom: 8px;
+}
+
+.single-room-listeners h5 {
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 8px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 16px;
+  color: #c5c5c5;
 }

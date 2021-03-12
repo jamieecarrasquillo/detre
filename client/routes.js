@@ -12,7 +12,7 @@ import {
   Settings,
   MyRooms,
   NewRoom,
-  Joining
+  Room
 } from './components'
 import {me} from './store'
 
@@ -36,13 +36,13 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/home" component={Home} />
-            <Route exact path="/edit-profile" component={EditProfile} />
+            <Route exact path="/editprofile" component={EditProfile} />
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/settings" component={Settings} />
             <Route exact path="/myrooms" component={MyRooms} />
             <Route exact path="/newroom" component={NewRoom} />
-            <Route exact path="/joining/:id" component={Joining} />
+            <Route exact path="/room/:id" component={Room} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

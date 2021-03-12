@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {link} from 'react-router-dom'
-import Toast from '../../public/toast'
+import {Link} from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMicrophone} from '@fortawesome/free-solid-svg-icons'
 import './newroom.css'
@@ -46,9 +45,7 @@ export class NewRoom extends React.Component {
             className="placeholder-color"
           />
 
-          <button type="submit" className="new-room-button">
-            Go Live
-          </button>
+          <button className="new-room-button">Go Live</button>
         </form>
       </div>
     )

@@ -9,6 +9,13 @@ const Room = db.define('room', {
   description: {
     type: Sequelize.TEXT,
     allowNull: true
+  },
+  category: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  hashtags: {
+    type: Sequelize.STRING
   }
 })
 

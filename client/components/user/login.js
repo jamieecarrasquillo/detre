@@ -1,9 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {auth} from '../store/user'
+import {auth} from '../../store'
+import {Link} from 'react-router-dom'
 import GoogleButton from 'react-google-button'
-import './signup.css'
+import './login.css'
+
 /**
  * COMPONENT
  */
@@ -29,6 +31,11 @@ const AuthForm = props => {
         <button type="submit" className="auth-btn">
           {displayName}
         </button>
+
+        <Link to="/signup" className="link">
+          New? Click Here.
+        </Link>
+
         <div className="login-divider">
           <div className="divider" />
           <div className="or-divider">or</div>
@@ -50,6 +57,13 @@ const AuthForm = props => {
  *   function, and share the same Component. This is a good example of how we
  *   can stay DRY with interfaces that are very similar to each other!
  */
+const mapLogin = state => {
+  return {
+    name: 'login',
+    displayName: 'Login',
+    error: state.user.error
+  }
+}
 
 const mapSignup = state => {
   return {
@@ -63,16 +77,15 @@ const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
       evt.preventDefault()
-      const firstName = evt.target.firstName.value
-      const lastName = evt.target.lastName.value
       const formName = evt.target.name
       const email = evt.target.email.value
       const password = evt.target.password.value
-      dispatch(auth(firstName, lastName, email, password, formName))
+      dispatch(auth(email, password, formName))
     }
   }
 }
 
+export const Login = connect(mapLogin, mapDispatch)(AuthForm)
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
 
 /**

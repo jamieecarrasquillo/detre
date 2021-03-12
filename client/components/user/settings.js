@@ -2,14 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {link} from 'react-router-dom'
-import Toast from '../../public/toast'
-import './edit-profile.css'
-import {render} from 'enzyme'
+import './settings.css'
 
 /**
  * COMPONENT
  */
-export class MyRooms extends React.Component {
+export class Settings extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -27,4 +25,4 @@ const mapDispatch = dispatch => {
   return {}
 }
 
-export default connect(mapState, mapDispatch)(MyRooms)
+export default connect(mapState, mapDispatch)(Settings)

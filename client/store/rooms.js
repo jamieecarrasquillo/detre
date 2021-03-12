@@ -1,5 +1,5 @@
 import axios from 'axios'
-import history from '../history'
+import history from './../history'
 
 /**
  * ACTION TYPES
@@ -8,13 +8,14 @@ const SET_ROOMS = 'SET_ROOMS'
 const REMOVE_ROOM = 'REMOVE_ROOM'
 const NEW_ROOM = 'NEW_ROOM'
 const SET_SINGLE_ROOM = 'SET_SINGLE_ROOM'
+const LEAVE_SINGLE_ROOM = 'LEAVE_SINGLE_ROOM'
 
 /**
  * INITIAL STATE
  */
 const roomsContainer = [
   {
-    title: 'The Ways of Entrepreneurship',
+    title: 'The ways of entrepreneurship',
     description: `Come chat about the current events happening all over the south east of the United
     States. These wheather conditions have affected all of us in different ways and we are
     all sure to benefit from sharing our stories. 
@@ -62,7 +63,7 @@ export const fetchRooms = () => async dispatch => {
 
 export const deleteRoom = (userId, roomId) => async dispatch => {
   try {
-    const res = await axios.put(`api/room/${userId}/${roomId}`)
+    const res = await axios.delete(`api/room/${userId}/${roomId}`)
     dispatch(removeRoom(res.data))
   } catch (err) {
     console.error(err)
@@ -82,6 +83,15 @@ export const fetchSingleRoom = roomId => async dispatch => {
   try {
     const res = await axios.get(`api/room/${roomId}`)
     dispatch(setSingleRoom(res.data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const leaveRoom = roomId => async dispatch => {
+  try {
+    const res = await axios.delete(`api/room/${roomId}`)
+    dispatch(leaveRoom(res.data))
   } catch (err) {
     console.error(err)
   }
