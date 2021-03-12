@@ -3,22 +3,9 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {useState} from 'react'
-import Toast from '../../public/toast'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faEllipsisV} from '@fortawesome/free-solid-svg-icons'
-
 import './profile.css'
-import {render} from 'enzyme'
-
-//Toast Example
-// const checkout = id => {
-//   if (id) {
-//     Toast.show('Congratulations on your new getaway!', 'success')
-//     this.props.cartCheckout(id)
-//   } else {
-//     Toast.show('You cannot checkout without logging in!', 'failure')
-//   }
-// }
 
 /**
  * COMPONENT

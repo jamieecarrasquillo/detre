@@ -2,19 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {link} from 'react-router-dom'
-import Toast from '../../public/toast'
 import './edit-profile.css'
-import {render} from 'enzyme'
-
-//Toast Example
-// const checkout = id => {
-//   if (id) {
-//     Toast.show('Congratulations on your new getaway!', 'success')
-//     this.props.cartCheckout(id)
-//   } else {
-//     Toast.show('You cannot checkout without logging in!', 'failure')
-//   }
-// }
 
 /**
  * COMPONENT
@@ -43,7 +31,6 @@ export class UserProfile extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    Toast.show('Profile saved.', 'success')
   }
 
   render() {

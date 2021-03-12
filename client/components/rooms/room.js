@@ -2,20 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import Toast from '../../public/toast'
-import './joining.css'
+import './room.css'
 import {render} from 'enzyme'
 
 /**
  * COMPONENT
  */
-export class Joining extends React.Component {
+export class Room extends React.Component {
   constructor(props) {
     super(props)
   }
 
   render() {
-    console.log(this.props.roomsContainer)
     return (
       <div className="outter-room-container">
         <div className="room-container">
@@ -29,11 +27,11 @@ export class Joining extends React.Component {
 
           <div className="single-room-people">
             <div className="single-room-speakers">
-              <h5>Speakers</h5>
+              <h5>Speakers (24)</h5>
               <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
             </div>
             <div className="single-room-listeners">
-              <h5>Listeners</h5>
+              <h5>Listeners (24)</h5>
               <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
             </div>
           </div>
@@ -62,4 +60,4 @@ const mapDispatch = dispatch => {
   return {}
 }
 
-export default connect(mapState, mapDispatch)(Joining)
+export default connect(mapState, mapDispatch)(Room)

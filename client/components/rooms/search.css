@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --logo: #f45d48;
+  --background: #f8f5f2;
+  --headline: #232323;
+  --paragraph: #222525;
+  --buttons: #078080;
+  --buttons-text: #ffffff;
+  --ilustration-background: #fffffe;
+}
+
+.search-results-container {
+  background-color: var(--background);
+  margin: auto;
+  margin-top: 50px;
+  padding: 10px 30px;
+  padding-top: 10px;
+  padding-bottom: 0;
+  max-width: 600px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-results-container h4 {
+  font-size: 25px;
+  font-family: Roboto;
+  font-style: normal;
+  color: var(--headline);
+}
+
+.search-results {
+  background-color: var(--ilustration-background);
+  margin-top: 50px;
+  padding: 10px 30px;
+  padding-top: 10px;
+  padding-bottom: 0;
+  max-width: 600px;
+  height: 200px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-results p {
+  font-size: 15px;
+  margin-top: 10px;
+  font-family: Roboto;
+  font-style: normal;
+  color: var(--paragraph);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8%;
+  display: block;
+}
+
+.start-room-button {
+  background-color: var(--buttons);
+  color: var(--buttons-text);
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.25);
+  font-family: Roboto;
+  font-style: normal;
+  font-size: 15px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  border-radius: 1px;
+}
