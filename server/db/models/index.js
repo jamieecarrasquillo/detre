@@ -15,9 +15,14 @@ const Room = require('./room')
  * instead of: const User = require('../db/models/user')
  */
 
-User.hasMany(Room)
-Room.belongsTo(User)
-// Room will have userId in its model
+Room.belongsTo(User, {as: 'roomCreator', foreignKey: 'creatorId'})
+User.hasMany(Room, {as: 'roomCreator'})
+
+User.belongsTo(Room, {
+  as: 'userWhoJoined',
+  foreignKey: 'joinedRoomId',
+  constraints: false
+})
 
 module.exports = {
   User,
