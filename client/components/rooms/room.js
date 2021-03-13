@@ -37,7 +37,9 @@ export class Room extends React.Component {
           </div>
 
           <div className="leave-room">
-            <button>Leave</button>
+            <Link to="/home">
+              <button>Leave</button>
+            </Link>
           </div>
         </div>
 

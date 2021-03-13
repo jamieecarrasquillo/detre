@@ -62,3 +62,10 @@
   margin-bottom: 15px;
   margin-top: 15px;
 }
+
+.link {
+  color: var(--buttons);
+  font-family: Roboto;
+  font-style: normal;
+  margin-bottom: 15px;
+}

@@ -87,11 +87,7 @@ class Navbar extends React.Component {
                 </Link>
 
                 <li>
-                  <a
-                    href="#"
-                    className="logout-button"
-                    onClick={this.props.handleClick}
-                  >
+                  <a href="#" className="link" onClick={this.props.handleClick}>
                     Log Out
                   </a>
                 </li>

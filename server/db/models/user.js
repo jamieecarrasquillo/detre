@@ -22,12 +22,12 @@ const User = db.define('user', {
   },
   username: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
     unique: true
   },
   profilePicture: {
     type: Sequelize.TEXT,
-    allowNull: false,
+    allowNull: true,
     defaultValue:
       'https://www.vippng.com/png/detail/363-3631840_profile-icon-png-profile-icon-png-white-transparent.png'
   },

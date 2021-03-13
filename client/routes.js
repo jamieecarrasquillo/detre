@@ -12,7 +12,9 @@ import {
   Settings,
   MyRooms,
   NewRoom,
-  Room
+  Room,
+  VideoRoom,
+  CreateVideoRoom
 } from './components'
 import {me} from './store'
 
@@ -35,6 +37,7 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
+            <Route exact path="/" component={Home} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/editprofile" component={EditProfile} />
             <Route exact path="/profile" component={UserProfile} />
@@ -43,6 +46,8 @@ class Routes extends Component {
             <Route exact path="/myrooms" component={MyRooms} />
             <Route exact path="/newroom" component={NewRoom} />
             <Route exact path="/room/:id" component={Room} />
+            <Route exact path="/socket.io/room/:id" component={VideoRoom} />
+            {/* <Route exact path="/socket.io/" component={CreateVideoRoom} /> */}
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
