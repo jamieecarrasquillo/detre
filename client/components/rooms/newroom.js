@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMicrophone} from '@fortawesome/free-solid-svg-icons'
+import CreateVideoRoom from './createvideoroom'
 import './newroom.css'
 
 /**
@@ -45,7 +46,11 @@ export class NewRoom extends React.Component {
             className="placeholder-color"
           />
 
-          <button className="new-room-button">Go Live</button>
+          {/* <button className="new-room-button">Go Live</button> */}
+          <CreateVideoRoom />
+          <Link to="/home" className="link">
+            Go Back.
+          </Link>
         </form>
       </div>
     )

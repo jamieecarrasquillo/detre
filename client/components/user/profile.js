@@ -85,7 +85,7 @@ export class UserProfile extends React.Component {
         </div>
 
         <div className="edit-profile-btn">
-          <Link to="/edit-profile">
+          <Link to="/editprofile">
             <button>Edit Profile</button>
           </Link>
         </div>

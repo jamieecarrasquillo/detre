@@ -86,11 +86,6 @@ li:hover {
   color: var(--headline);
 }
 
-.logout-button {
-  color: var(--headline);
-  border-radius: 1px;
-}
-
 /* Tablet and Mobile Settings */
 @media (max-width: 500px) {
 }
