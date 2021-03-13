@@ -47,7 +47,11 @@ export class NewRoom extends React.Component {
           />
 
           {/* <button className="new-room-button">Go Live</button> */}
-          <CreateVideoRoom />
+
+          <Link to="/">
+            <CreateVideoRoom />
+          </Link>
+
           <Link to="/home" className="link">
             Go Back.
           </Link>

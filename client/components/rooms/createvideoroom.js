@@ -3,6 +3,7 @@ import {v1 as uuid} from 'uuid'
 import './createvideoroom.css'
 
 const CreateVideoRoom = props => {
+  console.log(props.history)
   function create() {
     const id = uuid()
     props.history.push(`/room/${id}`)
