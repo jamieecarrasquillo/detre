@@ -46,8 +46,6 @@ export class NewRoom extends React.Component {
             className="placeholder-color"
           />
 
-          {/* <button className="new-room-button">Go Live</button> */}
-
           <Link to="/">
             <CreateVideoRoom />
           </Link>

@@ -37,7 +37,6 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            {/* <Route exact path="/" component={Home} /> */}
             <Route exact path="/home" component={Home} />
             <Route exact path="/editprofile" component={EditProfile} />
             <Route exact path="/profile" component={UserProfile} />
@@ -45,8 +44,8 @@ class Routes extends Component {
             <Route exact path="/settings" component={Settings} />
             <Route exact path="/myrooms" component={MyRooms} />
             <Route exact path="/newroom" component={NewRoom} />
-            {/* <Route exact path="/room/:id" component={Room} /> */}
-            <Route exact path="/room/:id" component={VideoRoom} />
+            <Route exact path="/room/:id" component={Room} />
+            <Route exact path="/newroom/:id" component={VideoRoom} />
             <Route exact path="/" component={CreateVideoRoom} />
           </Switch>
         )}
