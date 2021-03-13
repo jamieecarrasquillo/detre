@@ -18,7 +18,8 @@ async function seed() {
       website: 'google.com',
       bio:
         'ᨏ☼ isleña puerto rico \n full-stack software engineer \n aussie mom kyloanddrogo',
-      joinedRoomId: 2
+      joinedRoomId: 2,
+      isAdmin: true
     }),
     User.create({
       name: 'Murphy Cesar',
@@ -29,7 +30,8 @@ async function seed() {
         'https://www.vippng.com/png/detail/363-3631840_profile-icon-png-profile-icon-png-white-transparent.png',
       website: 'google.com',
       bio: 'Friendly gal.',
-      joinedRoomId: 1
+      joinedRoomId: 1,
+      isAdmin: false
     })
   ])
 

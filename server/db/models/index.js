@@ -16,13 +16,22 @@ const Room = require('./room')
  */
 
 Room.belongsTo(User, {as: 'roomCreator', foreignKey: 'creatorId'})
-User.hasMany(Room, {as: 'roomCreator'})
+//Methods that get created by this association:
+// "getUser", "setUser", and "createUser"
 
 User.belongsTo(Room, {
   as: 'userWhoJoined',
   foreignKey: 'joinedRoomId',
   constraints: false
 })
+//Methods that get created by this association:
+// "getRoom", "setRoom", and "createRoom"
+
+User.hasMany(Room, {as: 'roomCreator'})
+// Methods that get created by this association:
+// "getRooms", "setRooms", "createRoom", "addRoom", "addRooms",
+// "removeRoom", "removeRooms", "hasRoom", "hasRooms", "countRooms"
+// (because we defined Owner.hasMany(Pug)).
 
 module.exports = {
   User,

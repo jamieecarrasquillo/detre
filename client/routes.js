@@ -27,7 +27,7 @@ class Routes extends Component {
   }
 
   render() {
-    const {isLoggedIn, username} = this.props
+    const {isLoggedIn, username, isAdmin} = this.props
 
     return (
       <Switch>
@@ -64,7 +64,8 @@ const mapState = state => {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
     isLoggedIn: !!state.user.id,
-    username: state.user.username
+    username: state.user.username,
+    isAdmin: !!state.user.isAdmin
   }
 }
 
@@ -85,5 +86,6 @@ export default withRouter(connect(mapState, mapDispatch)(Routes))
  */
 Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
+  isAdmin: PropTypes.bool.isRequired
 }

@@ -106,7 +106,8 @@ class Navbar extends React.Component {
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
-    image: state.user.profilePicture
+    image: state.user.profilePicture,
+    isAdmin: !!state.user.isAdmin
   }
 }
 
@@ -125,5 +126,6 @@ export default connect(mapState, mapDispatch)(Navbar)
  */
 Navbar.propTypes = {
   handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
+  isAdmin: PropTypes.bool.isRequired
 }
