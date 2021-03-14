@@ -58,6 +58,19 @@ router.put('/:roomId', async (req, res, next) => {
   }
 })
 
+// // PUT user unjoin single room
+// // ROUTE /api/rooms/unjoin/:roomId
+router.put('/unjoin/:roomId', async (req, res, next) => {
+  try {
+    let roomUserWantsToUnjoin = await Room.findByPk(req.params.roomId)
+    let user = req.user.id
+    user.joinedRoomId = null
+    res.json(roomUserWantsToUnjoin)
+  } catch (err) {
+    next(err)
+  }
+})
+
 // DELETE room
 // ROUTE api/rooms/roomId
 router.delete('/:roomId', async (req, res, next) => {

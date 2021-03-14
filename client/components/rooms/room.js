@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {fetchSingleRoom, leaveRoom} from './../../store/rooms'
 import './room.css'
 import {render} from 'enzyme'
 
@@ -13,17 +14,22 @@ export class Room extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    this.props.fetchSingleRoom(this.props.match.params.id)
+  }
+
   render() {
+    const room = this.props.rooms ? this.props.rooms : {}
     return (
       <div className="outter-room-container">
         <div className="room-container">
           <div className="single-room-header">
             <img src={this.props.userImage} />
-            <h4>Title</h4>
-            <div>48+ more</div>
+            <h4>{room.title}</h4>
+            <div>+48 more</div>
           </div>
 
-          <p>Description here.</p>
+          <p>{room.description}</p>
 
           <div className="single-room-people">
             <div className="single-room-speakers">
@@ -37,9 +43,11 @@ export class Room extends React.Component {
           </div>
 
           <div className="leave-room">
-            <Link to="/home">
-              <button>Leave</button>
-            </Link>
+            <button
+              onClick={() => this.props.leaveRoom(this.props.match.params.id)}
+            >
+              Leave
+            </button>
           </div>
         </div>
 
@@ -53,13 +61,16 @@ export class Room extends React.Component {
 
 const mapState = state => {
   return {
-    roomsContainer: state.roomsContainer,
+    rooms: state.rooms,
     userImage: state.user.profilePicture
   }
 }
 
 const mapDispatch = dispatch => {
-  return {}
+  return {
+    fetchSingleRoom: roomId => dispatch(fetchSingleRoom(roomId)),
+    leaveRoom: roomId => dispatch(leaveRoom(roomId))
+  }
 }
 
 export default connect(mapState, mapDispatch)(Room)

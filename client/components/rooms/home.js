@@ -1,20 +1,30 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {fetchRooms, enterRoom} from './../../store/rooms'
 import './home.css'
 
 /**
  * COMPONENT
  */
 export const Home = props => {
-  const {roomsContainer, userImage} = props
+  const {rooms, userId, userImage, fetchRooms, enterRoom} = props
+
+  useEffect(
+    () => {
+      if (userId) {
+        fetchRooms()
+      }
+    },
+    [userId]
+  )
 
   const [expanded, setExpanded] = useState(false)
 
-  return (
+  return rooms.length > 0 ? (
     <div className="all-rooms-container">
-      {roomsContainer.map(room => {
+      {rooms.map(room => {
         return (
           <div key={room.id} className="single-room-container">
             <div className="room-image-title">
@@ -51,7 +61,12 @@ export const Home = props => {
             </p>
             <div className="join-room-button-parent">
               <Link to={`room/${room.id}`}>
-                <button className="join-room-button">Join</button>
+                <button
+                  className="join-room-button"
+                  onClick={() => enterRoom(room.id)}
+                >
+                  Join
+                </button>
               </Link>
             </div>
           </div>
@@ -62,6 +77,8 @@ export const Home = props => {
         <button className="start-room-button"> + Start a room</button>
       </Link>
     </div>
+  ) : (
+    <h5 className="home-loading">Loading...</h5>
   )
 }
 
@@ -70,9 +87,17 @@ export const Home = props => {
  */
 const mapState = state => {
   return {
-    roomsContainer: state.roomsContainer,
+    rooms: state.rooms,
+    userId: state.user.id,
     userImage: state.user.profilePicture
   }
 }
 
-export default connect(mapState)(Home)
+const mapDispatch = dispatch => {
+  return {
+    fetchRooms: () => dispatch(fetchRooms()),
+    enterRoom: roomId => dispatch(enterRoom(roomId))
+  }
+}
+
+export default connect(mapState, mapDispatch)(Home)

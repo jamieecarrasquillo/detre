@@ -5,56 +5,34 @@ import history from './../history'
  * ACTION TYPES
  */
 const SET_ROOMS = 'SET_ROOMS'
+const ADD_ROOM = 'ADD_ROOM'
 const REMOVE_ROOM = 'REMOVE_ROOM'
-const NEW_ROOM = 'NEW_ROOM'
 const SET_SINGLE_ROOM = 'SET_SINGLE_ROOM'
-const LEAVE_SINGLE_ROOM = 'LEAVE_SINGLE_ROOM'
+const JOIN_ROOM = 'JOIN_ROOM'
+const UNJOIN_ROOM = 'UNJOIN_ROOM'
 
 /**
  * INITIAL STATE
  */
-const roomsContainer = [
-  {
-    title: 'The ways of entrepreneurship',
-    description: `Come chat about the current events happening all over the south east of the United
-    States. These wheather conditions have affected all of us in different ways and we are
-    all sure to benefit from sharing our stories. 
-    
-    Please be aware that we enforce community rules:
-    * No harresment of any kind
-    * No speaking unless given the chance
-    * No spamming messages
-    * Come chat about the current events happening all over the south east of the United
-    States. These wheather conditions have affected all of us in different ways and we are
-    all sure to benefit from sharing our stories. 
-    
-    Please be aware that we enforce community rules:
-    * No harresment of any kind
-    * No speaking unless given the chance
-    * No spamming messages`,
-    userId: 1
-  },
-  {
-    title: 'Value in todays world',
-    description: 'Bloom like a butterfly, the time is now.',
-    userId: 2
-  }
-]
+
+const initialState = []
 
 /**
  * ACTION CREATORS
  */
 export const setRooms = rooms => ({type: SET_ROOMS, rooms})
+export const newRoom = room => ({type: ADD_ROOM, room})
 export const removeRoom = roomId => ({type: REMOVE_ROOM, roomId})
-export const newRoom = room => ({type: NEW_ROOM, room})
 export const setSingleRoom = room => ({type: SET_SINGLE_ROOM, room})
+export const joinRoom = roomId => ({type: JOIN_ROOM, roomId})
+export const unjoinRoom = roomId => ({type: UNJOIN_ROOM, roomId})
 
 /**
  * THUNK CREATORS
  */
 export const fetchRooms = () => async dispatch => {
   try {
-    const res = await axios.get('/home')
+    const res = await axios.get('/api/rooms/')
     dispatch(setRooms(res.data))
   } catch (err) {
     console.error(err)
@@ -63,7 +41,7 @@ export const fetchRooms = () => async dispatch => {
 
 export const deleteRoom = (userId, roomId) => async dispatch => {
   try {
-    const res = await axios.delete(`api/room/${userId}/${roomId}`)
+    const res = await axios.delete(`/api/rooms/${userId}/${roomId}`)
     dispatch(removeRoom(res.data))
   } catch (err) {
     console.error(err)
@@ -72,8 +50,9 @@ export const deleteRoom = (userId, roomId) => async dispatch => {
 
 export const addRoom = room => async dispatch => {
   try {
-    const res = await axios.post(`api/room/${userId}/${roomId}`)
+    const res = await axios.post('/api/rooms/', room)
     dispatch(newRoom(res.data))
+    history.push(`/room/${res.data.id}`)
   } catch (err) {
     console.error(err)
   }
@@ -81,8 +60,17 @@ export const addRoom = room => async dispatch => {
 
 export const fetchSingleRoom = roomId => async dispatch => {
   try {
-    const res = await axios.get(`api/room/${roomId}`)
+    const res = await axios.get(`/api/rooms/${roomId}`)
     dispatch(setSingleRoom(res.data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const enterRoom = roomId => async dispatch => {
+  try {
+    const res = await axios.put(`/api/rooms/${roomId}`)
+    dispatch(joinRoom(res.data))
   } catch (err) {
     console.error(err)
   }
@@ -90,8 +78,9 @@ export const fetchSingleRoom = roomId => async dispatch => {
 
 export const leaveRoom = roomId => async dispatch => {
   try {
-    const res = await axios.delete(`api/room/${roomId}`)
-    dispatch(leaveRoom(res.data))
+    const res = await axios.put(`/api/rooms/unjoin/${roomId}`)
+    dispatch(unjoinRoom(res.data))
+    history.push('/home')
   } catch (err) {
     console.error(err)
   }
@@ -100,16 +89,20 @@ export const leaveRoom = roomId => async dispatch => {
 /**
  * REDUCER
  */
-export default function(state = roomsContainer, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case SET_ROOMS:
       return action.rooms
+    case ADD_ROOM:
+      return [...state, action.room]
     case REMOVE_ROOM:
       return state.filter(room => room.id !== action.roomId)
-    case NEW_ROOM:
-      return [...NEW_ROOM, state.room]
     case SET_SINGLE_ROOM:
       return action.room
+    case JOIN_ROOM:
+      return action.roomId
+    case UNJOIN_ROOM:
+      return state
     default:
       return state
   }
