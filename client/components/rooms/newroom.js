@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMicrophone} from '@fortawesome/free-solid-svg-icons'
 import {addRoom} from './../../store/rooms'
-import CreateVideoRoom from './createvideoroom'
 import './newroom.css'
 
 /**

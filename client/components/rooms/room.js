@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useEffect, useRef} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchSingleRoom, leaveRoom} from './../../store/rooms'
+import VideoRoom from './videoroom'
 import './room.css'
-import {render} from 'enzyme'
 
 /**
  * COMPONENT
@@ -12,10 +12,20 @@ import {render} from 'enzyme'
 export class Room extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      streams: new Set()
+    }
+    this.onJoin = this.onJoin.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchSingleRoom(this.props.match.params.id)
+  }
+
+  onJoin(stream) {
+    this.setState({
+      streams: new Set([...Array.from(this.state.streams), stream])
+    })
   }
 
   render() {
@@ -33,12 +43,68 @@ export class Room extends React.Component {
 
           <div className="single-room-people">
             <div className="single-room-speakers">
-              <h5>Speakers (24)</h5>
-              <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+              <h5>Videos ({this.state.streams.size})</h5>
+              <div className="flexbox">
+                {Array.from(this.state.streams).map(stream => (
+                  <Video
+                    className="single-room-video"
+                    autoPlay
+                    srcObject={stream}
+                  />
+                ))}
+              </div>
             </div>
-            <div className="single-room-listeners">
+            <div className="single-room-speakers">
+              <h5>Speakers (24)</h5>
+              <div className="flexbox">
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+              </div>
+            </div>
+            <div className="single-room-speakers">
               <h5>Listeners (24)</h5>
-              <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+              <div className="flexbox">
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+                <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-22171/IMG_E9969.jpg" />
+              </div>
             </div>
           </div>
 
@@ -51,12 +117,30 @@ export class Room extends React.Component {
           </div>
         </div>
 
+        <div className="container-of-videos">
+          <VideoRoom roomID={this.props.match.params.id} onJoin={this.onJoin} />
+        </div>
+
         <Link to="/newroom">
           <button className="start-room-button"> + Start a room</button>
         </Link>
       </div>
     )
   }
+}
+
+function Video({srcObject, ...props}) {
+  const refVideo = useRef(null)
+
+  useEffect(
+    () => {
+      if (!refVideo.current) return
+      refVideo.current.srcObject = srcObject
+    },
+    [srcObject]
+  )
+
+  return <video ref={refVideo} {...props} />
 }
 
 const mapState = state => {

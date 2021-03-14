@@ -10,7 +10,7 @@ async function seed() {
   const users = await Promise.all([
     User.create({
       name: 'Jamie Eunice',
-      email: 'cody@email.com',
+      email: 'jamie@email.com',
       password: '123',
       username: 'jeimiyuniseu',
       profilePicture:
@@ -22,14 +22,26 @@ async function seed() {
       isAdmin: true
     }),
     User.create({
-      name: 'Murphy Cesar',
-      email: 'murphy@email.com',
+      name: 'Jon Ros',
+      email: 'jon@email.com',
       password: '123',
-      username: 'morphedbutterfly',
+      username: 'jonrolu',
       profilePicture:
         'https://www.vippng.com/png/detail/363-3631840_profile-icon-png-profile-icon-png-white-transparent.png',
       website: 'google.com',
       bio: 'Friendly gal.',
+      joinedRoomId: 1,
+      isAdmin: false
+    }),
+    User.create({
+      name: 'Lola Lalo',
+      email: 'lola@email.com',
+      password: '123',
+      username: 'lolalalo',
+      profilePicture:
+        'https://www.vippng.com/png/detail/363-3631840_profile-icon-png-profile-icon-png-white-transparent.png',
+      website: 'google.com',
+      bio: 'Your fav lola.',
       joinedRoomId: 1,
       isAdmin: false
     })

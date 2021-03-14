@@ -1,9 +1,9 @@
-import React, {useRef, useEffect} from 'react'
+import React, {VideoHTMLAttributes, useRef, useEffect, useState} from 'react'
 import io from 'socket.io-client'
 
 const VideoRoom = props => {
-  const userVideo = useRef()
-  const partnerVideo = useRef()
+  // const userVideo = useRef()
+  // const partnerVideo = useRef()
   const peerRef = useRef()
   const socketRef = useRef()
   const otherUser = useRef()
@@ -13,18 +13,23 @@ const VideoRoom = props => {
     navigator.mediaDevices
       .getUserMedia({audio: true, video: true})
       .then(stream => {
-        userVideo.current.srcObject = stream
+        console.log('STARTING STREAM', stream)
+        // userVideo.current.srcObject = stream
+        // setStreams((set) => new Set([...Array.from(set), stream]))
+        props.onJoin(stream)
         userStream.current = stream
 
         socketRef.current = io.connect('/')
-        socketRef.current.emit('join room', props.match.params.roomID)
+        socketRef.current.emit('join room', props.roomID)
 
         socketRef.current.on('other user', userID => {
+          console.log('OTHER USER', userID)
           callUser(userID)
           otherUser.current = userID
         })
 
         socketRef.current.on('user joined', userID => {
+          console.log('USER JOINED', userID)
           otherUser.current = userID
         })
 
@@ -82,6 +87,7 @@ const VideoRoom = props => {
   }
 
   function handleRecieveCall(incoming) {
+    console.log('RECEIVING CALL', incoming)
     peerRef.current = createPeer()
     const desc = new RTCSessionDescription(incoming.sdp)
     peerRef.current
@@ -108,6 +114,7 @@ const VideoRoom = props => {
   }
 
   function handleAnswer(message) {
+    console.log('HANDLE ANSWER', message)
     const desc = new RTCSessionDescription(message.sdp)
     peerRef.current.setRemoteDescription(desc).catch(e => console.log(e))
   }
@@ -123,21 +130,43 @@ const VideoRoom = props => {
   }
 
   function handleNewICECandidateMsg(incoming) {
+    console.log('ICE CANDIDATE', incoming)
     const candidate = new RTCIceCandidate(incoming)
 
     peerRef.current.addIceCandidate(candidate).catch(e => console.log(e))
   }
 
   function handleTrackEvent(e) {
-    partnerVideo.current.srcObject = e.streams[0]
+    console.log('TRACK EVENT', e.streams)
+    props.onJoin(e.streams[0])
+    // setStreams((set) => new Set([...Array.from(set), e.streams[0]]))
+    // partnerVideo.current.srcObject = e.streams[0]
   }
 
-  return (
-    <div>
-      <video autoPlay ref={userVideo} />
-      <video autoPlay ref={partnerVideo} />
-    </div>
+  return null
+
+  // return (
+  //   <div>
+  //     {/* <video autoPlay ref={userVideo} /> */}
+  //     {Array.from(streams).map((stream) => (
+  //       <Video autoPlay srcObject={stream} />
+  //     ))}
+  //   </div>
+  // )
+}
+
+function Video({srcObject, ...props}) {
+  const refVideo = useRef(null)
+
+  useEffect(
+    () => {
+      if (!refVideo.current) return
+      refVideo.current.srcObject = srcObject
+    },
+    [srcObject]
   )
+
+  return <video ref={refVideo} {...props} />
 }
 
 export default VideoRoom

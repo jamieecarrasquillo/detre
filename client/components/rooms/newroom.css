@@ -64,7 +64,7 @@
 }
 
 .link {
-  color: var(--buttons);
+  color: var(--paragraph);
   font-family: Roboto;
   font-style: normal;
   margin-bottom: 15px;

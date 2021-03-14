@@ -114,9 +114,22 @@
   margin-top: 30px;
 }
 
+.single-room-speakers {
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.single-room-speakers .flexbox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .single-room-speakers h5 {
-  margin-right: 5%;
-  margin-left: 5%;
+  /* margin-right: 5%;
+  margin-left: 5%; */
   margin-bottom: 8px;
   font-family: Roboto;
   font-style: normal;
@@ -130,30 +143,16 @@
   border-radius: 45px !important;
   width: 40px;
   height: 40px;
-  margin-left: 8%;
-  margin-right: 8%;
-  flex-direction: row;
-  margin-bottom: 8px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  object-fit: cover;
 }
 
-.single-room-listeners img {
-  border-radius: 45px !important;
-  width: 40px;
-  height: 40px;
-  margin-left: 8%;
-  margin-right: 8%;
-  flex-direction: row;
-  margin-bottom: 8px;
-}
-
-.single-room-listeners h5 {
-  margin-right: 5%;
-  margin-left: 5%;
-  margin-bottom: 8px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 16px;
-  color: #c5c5c5;
+.single-room-video {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 5px;
+  margin-bottom: 5px;
 }
