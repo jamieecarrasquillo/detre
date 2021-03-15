@@ -9,6 +9,8 @@ import './room.css'
 /**
  * COMPONENT
  */
+
+// Fix video CSS to match component
 export class Room extends React.Component {
   constructor(props) {
     super(props)
