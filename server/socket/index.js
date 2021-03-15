@@ -30,7 +30,6 @@ module.exports = io => {
     })
 
     socket.on('disconnect', userID => {
-      // socket.to(roomId).broadcast.emit('user-disconnected', userID)
       console.log(`Connection ${socket.id} has been disconnected`)
     })
   })

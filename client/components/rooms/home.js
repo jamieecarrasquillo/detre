@@ -31,11 +31,7 @@ export const Home = props => {
               <img src={userImage} alt="" />
               <h4 className="room-title">{room.title}</h4>
               <div className="room-listeners">
-                <img
-                  style={{left: -130}}
-                  src="https://mail.google.com/mail/u/0?ui=2&ik=0ba1013171&attid=0.1.1&permmsgid=msg-f:1694262964339100593&th=17833b3081884bb1&view=fimg&sz=s0-l75-ft&attbid=ANGjdJ_Rqk5CPavnZpcj2HCbdm9kAElf81oRqX4rnWU51Fo-okeQ2I0lYFUE07IC1N4Ozy1Rvuvw8I4GDXOXJpoT7YSeR1AoBv_BKkLIOUbD8v1TqPF7SDQrmIY-fh4&disp=emb"
-                  alt=""
-                />
+                <img style={{left: -130}} src={userImage} alt="" />
                 <img
                   style={{left: -110}}
                   src="http://www.crybabyco.com/wp-content/uploads/2018/03/IMG_20180301_001330_396.jpg"

@@ -11,7 +11,6 @@ import './profile.css'
  * COMPONENT
  */
 export class UserProfile extends React.Component {
-  // const {name, email, image, username, googleId, website, bio} = props
   constructor(props) {
     super(props)
     this.state = {

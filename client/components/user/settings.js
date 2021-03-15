@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import './settings.css'
 
 /**
@@ -13,7 +13,19 @@ export class Settings extends React.Component {
   }
 
   render() {
-    return <h1>In process of being built.</h1>
+    return (
+      <div className="settings-container">
+        <h4>Settings</h4>
+
+        <div className="settings-options-container">
+          <p>My settings will appear here.</p>
+        </div>
+
+        <Link to="/newroom">
+          <button className="start-room-button"> + Start a room</button>
+        </Link>
+      </div>
+    )
   }
 }
 

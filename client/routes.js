@@ -41,7 +41,7 @@ class Routes extends Component {
             <Route exact path="/editprofile" component={EditProfile} />
             <Route exact path="/profile" component={UserProfile} />
             <Route exact path="/search" component={Search} />
-            {/* <Route exact path="/settings" component={Settings} /> */}
+            <Route exact path="/settings" component={Settings} />
             <Route exact path="/myrooms" component={MyRooms} />
             <Route exact path="/newroom" component={NewRoom} />
             <Route exact path="/room/:id" component={Room} />

@@ -10,7 +10,6 @@ import './navbar.css'
 import {render} from 'enzyme'
 
 class Navbar extends React.Component {
-  // ({handleClick, isLoggedIn, image})
   constructor(props) {
     super(props)
     this.state = {

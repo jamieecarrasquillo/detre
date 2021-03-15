@@ -11,7 +11,6 @@ const VideoRoom = props => {
     navigator.mediaDevices
       .getUserMedia({audio: false, video: true})
       .then(stream => {
-        console.log('STARTING STREAM', stream)
         props.onJoin(stream)
         userStream.current = stream
 
@@ -19,13 +18,11 @@ const VideoRoom = props => {
         socketRef.current.emit('join room', props.roomID)
 
         socketRef.current.on('other user', userID => {
-          console.log('OTHER USER', userID)
           callUser(userID)
           otherUser.current = userID
         })
 
         socketRef.current.on('user joined', userID => {
-          console.log('USER JOINED', userID)
           otherUser.current = userID
         })
 
@@ -83,7 +80,6 @@ const VideoRoom = props => {
   }
 
   function handleRecieveCall(incoming) {
-    console.log('RECEIVING CALL', incoming)
     peerRef.current = createPeer()
     const desc = new RTCSessionDescription(incoming.sdp)
     peerRef.current
@@ -110,7 +106,6 @@ const VideoRoom = props => {
   }
 
   function handleAnswer(message) {
-    console.log('HANDLE ANSWER', message)
     const desc = new RTCSessionDescription(message.sdp)
     peerRef.current.setRemoteDescription(desc).catch(e => console.log(e))
   }
@@ -126,32 +121,16 @@ const VideoRoom = props => {
   }
 
   function handleNewICECandidateMsg(incoming) {
-    console.log('ICE CANDIDATE', incoming)
     const candidate = new RTCIceCandidate(incoming)
 
     peerRef.current.addIceCandidate(candidate).catch(e => console.log(e))
   }
 
   function handleTrackEvent(e) {
-    console.log('TRACK EVENT', e.streams)
     props.onJoin(e.streams[0])
   }
 
   return null
-}
-
-function Video({srcObject, ...props}) {
-  const refVideo = useRef(null)
-
-  useEffect(
-    () => {
-      if (!refVideo.current) return
-      refVideo.current.srcObject = srcObject
-    },
-    [srcObject]
-  )
-
-  return <video ref={refVideo} {...props} />
 }
 
 export default VideoRoom
