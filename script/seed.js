@@ -29,38 +29,98 @@ async function seed() {
       profilePicture:
         'https://www.vippng.com/png/detail/363-3631840_profile-icon-png-profile-icon-png-white-transparent.png',
       website: 'google.com',
-      bio: 'Friendly gal.',
-      joinedRoomId: 1,
-      isAdmin: false
-    }),
-    User.create({
-      name: 'Lola Lalo',
-      email: 'lola@email.com',
-      password: '123',
-      username: 'lolalalo',
-      profilePicture:
-        'https://www.vippng.com/png/detail/363-3631840_profile-icon-png-profile-icon-png-white-transparent.png',
-      website: 'google.com',
-      bio: 'Your fav lola.',
+      bio: 'Friendly pal.',
       joinedRoomId: 1,
       isAdmin: false
     })
+    // User.create({
+    //   name: 'Lola Lalo',
+    //   email: 'lola@email.com',
+    //   password: '123',
+    //   username: 'lolalalo',
+    //   profilePicture:
+    //     'https://www.vippng.com/png/detail/363-3631840_profile-icon-png-profile-icon-png-white-transparent.png',
+    //   website: 'google.com',
+    //   bio: 'Your fav lola.',
+    //   joinedRoomId: 1,
+    //   isAdmin: false
+    // })
   ])
 
   const rooms = await Promise.all([
     Room.create({
-      title: 'The ways of Entrepreneurship',
-      description: 'Come listen fellow creative and hard working minds.',
+      title: 'Entrepreneurship Standarts',
+      description: `Come chat about the current events happening all over the south east of the United States. These have affected all of us in different ways and we are all sure to benefit from sharing our stories. 
+      
+      Please be aware that we enforce community rules:
+      * No harresment of any kind
+      * No speaking unless given the chance
+      * No spamming messages`,
       category: 'business',
       hashtags: '#wealth',
       creatorId: 1
     }),
     Room.create({
-      title: 'Value in todays world',
-      description: 'Bloom like a butterfly, the time is now.',
-      category: 'self love',
-      hashtags: 'love',
+      title: 'Modern Self-Love',
+      description: `Come chat about the current trends happening all over the self love community.
+
+      Please be aware that we enforce community rules:
+      * No harresment of any kind
+      * No speaking unless given the chance
+      * No spamming messages`,
+      category: 'self care',
+      hashtags: '#selflove',
       creatorId: 2
+    }),
+    Room.create({
+      title: 'Skincare Myths',
+      description: `Come chat about the current myths that exist all over the skincare community. 
+      
+      Please be aware that we enforce community rules:
+      * No harresment of any kind
+      * No speaking unless given the chance
+      * No spamming messages`,
+      category: 'self care',
+      hashtags: '#selflove',
+      creatorId: 1
+    }),
+    Room.create({
+      title: 'Relationship Quo',
+      description: `Come chat about the current behaviors that have helped relationships the most in this modern times. 
+      
+      Please be aware that we enforce community rules:
+      * No harresment of any kind
+      * No speaking unless given the chance
+      * No spamming messages`,
+      category: 'marriage',
+      hashtags: '#love',
+      creatorId: 2
+    }),
+    Room.create({
+      title: 'Women in Tech',
+      description: `Come chat about the current environment that women in tech go through.
+      
+      Please be aware that we enforce community rules:
+      * No harresment of any kind
+      * No speaking unless given the chance
+      * No spamming messages`,
+      category: 'technology',
+      hashtags: '#womencancode',
+      creatorId: 2
+    }),
+    Room.create({
+      title: 'Female and Male Energy',
+      description: `Come chat about the current events happening all over the south east of the United
+      States. These wheather conditions have affected all of us in different ways and we are
+      all sure to benefit from sharing our stories. 
+      
+      Please be aware that we enforce community rules:
+      * No harresment of any kind
+      * No speaking unless given the chance
+      * No spamming messages`,
+      category: 'psycology',
+      hashtags: '#energy',
+      creatorId: 1
     })
   ])
 

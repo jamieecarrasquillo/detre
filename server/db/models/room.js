@@ -4,18 +4,43 @@ const db = require('../db')
 const Room = db.define('room', {
   title: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      notNull: {
+        msg: 'Please enter a title.'
+      }
+    }
   },
   description: {
     type: Sequelize.TEXT,
-    allowNull: true
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      notNull: {
+        msg: 'Please enter a description.'
+      }
+    }
   },
   category: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      notNull: {
+        msg: 'Please enter a category.'
+      }
+    }
   },
   hashtags: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      notNull: {
+        msg: 'Please enter at least one hashtag.'
+      }
+    }
   }
 })
 

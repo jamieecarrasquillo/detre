@@ -10,10 +10,22 @@ const User = db.define('user', {
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isEmail: true,
+      notNull: {
+        msg: 'Please enter your email.'
+      }
+    }
   },
   password: {
     type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notNull: {
+        msg: 'Please enter your password.'
+      }
+    },
     // Making `.password` act like a func hides it when serializing to JSON.
     // This is a hack to get around Sequelize's lack of a "private" option.
     get() {
@@ -33,7 +45,10 @@ const User = db.define('user', {
   },
   website: {
     type: Sequelize.TEXT,
-    allowNull: true
+    allowNull: true,
+    validate: {
+      isUrl: true
+    }
   },
   bio: {
     type: Sequelize.TEXT,
@@ -51,6 +66,14 @@ const User = db.define('user', {
     type: Sequelize.STRING
   },
   isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
+  speaker: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
+  listener: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   }

@@ -78,7 +78,7 @@ export const Home = props => {
       </Link>
     </div>
   ) : (
-    <h5 className="home-loading">Loading...</h5>
+    <div />
   )
 }
 

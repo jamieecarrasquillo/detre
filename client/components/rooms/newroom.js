@@ -78,7 +78,7 @@ export class NewRoom extends React.Component {
             Go Live
           </button>
 
-          <Link to="/home" className="link">
+          <Link to="/home" className="go-back-button">
             Go Back.
           </Link>
         </form>

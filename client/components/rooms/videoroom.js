@@ -2,8 +2,6 @@ import React, {VideoHTMLAttributes, useRef, useEffect, useState} from 'react'
 import io from 'socket.io-client'
 
 const VideoRoom = props => {
-  // const userVideo = useRef()
-  // const partnerVideo = useRef()
   const peerRef = useRef()
   const socketRef = useRef()
   const otherUser = useRef()
@@ -14,8 +12,6 @@ const VideoRoom = props => {
       .getUserMedia({audio: true, video: true})
       .then(stream => {
         console.log('STARTING STREAM', stream)
-        // userVideo.current.srcObject = stream
-        // setStreams((set) => new Set([...Array.from(set), stream]))
         props.onJoin(stream)
         userStream.current = stream
 
@@ -139,20 +135,9 @@ const VideoRoom = props => {
   function handleTrackEvent(e) {
     console.log('TRACK EVENT', e.streams)
     props.onJoin(e.streams[0])
-    // setStreams((set) => new Set([...Array.from(set), e.streams[0]]))
-    // partnerVideo.current.srcObject = e.streams[0]
   }
 
   return null
-
-  // return (
-  //   <div>
-  //     {/* <video autoPlay ref={userVideo} /> */}
-  //     {Array.from(streams).map((stream) => (
-  //       <Video autoPlay srcObject={stream} />
-  //     ))}
-  //   </div>
-  // )
 }
 
 function Video({srcObject, ...props}) {

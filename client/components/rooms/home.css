@@ -132,14 +132,6 @@
   overflow-y: scroll;
 }
 
-.home-loading {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  color: var(--paragraph);
-}
-
 /* Tablet and Mobile Settings */
 @media (max-width: 500px) {
   .room-listeners img {
