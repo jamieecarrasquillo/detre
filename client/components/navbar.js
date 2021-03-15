@@ -48,6 +48,7 @@ class Navbar extends React.Component {
 
   render() {
     if (!this.props.isLoggedIn) return <div />
+
     return (
       <div className="navbar-container">
         <Link to="/home">
@@ -62,10 +63,6 @@ class Navbar extends React.Component {
         </div>
 
         <div className="profile-icon" ref={this.container}>
-          {/* <Link to="/profile">
-            <img src={image} alt="" width="35px" />
-          </Link> */}
-
           <button type="button" onClick={this.handleButtonClick}>
             <img src={this.props.image} alt="" width="35px" />
           </button>

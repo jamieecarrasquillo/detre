@@ -41,6 +41,12 @@ const Room = db.define('room', {
         msg: 'Please enter at least one hashtag.'
       }
     }
+  },
+  creatorImage: {
+    type: Sequelize.TEXT,
+    allowNull: true,
+    defaultValue:
+      'https://www.searchpng.com/wp-content/uploads/2019/02/Profile-ICon.png'
   }
 })
 

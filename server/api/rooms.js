@@ -31,12 +31,14 @@ router.post('/', async (req, res, next) => {
   try {
     let {title, description, category, hashtags} = req.body
     let creatorId = req.user.id
+    let creatorImage = req.user.profilePicture
     let newRoom = await Room.create({
       title,
       description,
       category,
       hashtags,
-      creatorId
+      creatorId,
+      creatorImage
     })
 
     const user = await User.findOne({where: {id: req.user.id}})

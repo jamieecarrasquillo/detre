@@ -30,7 +30,7 @@ async function seed() {
       password: '123',
       username: 'jonrolu',
       profilePicture:
-        'https://www.vippng.com/png/detail/363-3631840_profile-icon-png-profile-icon-png-white-transparent.png',
+        'https://www.searchpng.com/wp-content/uploads/2019/02/Profile-ICon.png',
       website: 'google.com',
       bio: 'Friendly pal.',
       joinedRoomId: 1,
@@ -51,7 +51,9 @@ async function seed() {
       * No spamming messages`,
       category: 'business',
       hashtags: '#wealth',
-      creatorId: 1
+      creatorId: 1,
+      creatorImage:
+        'https://media-exp1.licdn.com/dms/image/C4E03AQGr2JhwHUAbXg/profile-displayphoto-shrink_400_400/0/1593014512052?e=1619654400&v=beta&t=md-8FwRQqKxWwMj259C9iOXYBHycHeBp94YqDEvQPTI'
     }),
     Room.create({
       title: 'Modern Self-Love',
@@ -63,7 +65,9 @@ async function seed() {
       * No spamming messages`,
       category: 'self care',
       hashtags: '#selflove',
-      creatorId: 1
+      creatorId: 1,
+      creatorImage:
+        'https://media-exp1.licdn.com/dms/image/C4E03AQGr2JhwHUAbXg/profile-displayphoto-shrink_400_400/0/1593014512052?e=1619654400&v=beta&t=md-8FwRQqKxWwMj259C9iOXYBHycHeBp94YqDEvQPTI'
     }),
     Room.create({
       title: 'Skincare Myths',
@@ -75,7 +79,9 @@ async function seed() {
       * No spamming messages`,
       category: 'self care',
       hashtags: '#selflove',
-      creatorId: 1
+      creatorId: 1,
+      creatorImage:
+        'https://media-exp1.licdn.com/dms/image/C4E03AQGr2JhwHUAbXg/profile-displayphoto-shrink_400_400/0/1593014512052?e=1619654400&v=beta&t=md-8FwRQqKxWwMj259C9iOXYBHycHeBp94YqDEvQPTI'
     }),
     Room.create({
       title: 'Relationship Quo',
@@ -87,7 +93,9 @@ async function seed() {
       * No spamming messages`,
       category: 'marriage',
       hashtags: '#love',
-      creatorId: 1
+      creatorId: 1,
+      creatorImage:
+        'https://media-exp1.licdn.com/dms/image/C4E03AQGr2JhwHUAbXg/profile-displayphoto-shrink_400_400/0/1593014512052?e=1619654400&v=beta&t=md-8FwRQqKxWwMj259C9iOXYBHycHeBp94YqDEvQPTI'
     }),
     Room.create({
       title: 'Women in Tech',
@@ -99,7 +107,9 @@ async function seed() {
       * No spamming messages`,
       category: 'technology',
       hashtags: '#womencancode',
-      creatorId: 1
+      creatorId: 1,
+      creatorImage:
+        'https://media-exp1.licdn.com/dms/image/C4E03AQGr2JhwHUAbXg/profile-displayphoto-shrink_400_400/0/1593014512052?e=1619654400&v=beta&t=md-8FwRQqKxWwMj259C9iOXYBHycHeBp94YqDEvQPTI'
     }),
     Room.create({
       title: 'Female and Male Energy',
@@ -113,7 +123,9 @@ async function seed() {
       * No spamming messages`,
       category: 'psycology',
       hashtags: '#energy',
-      creatorId: 1
+      creatorId: 1,
+      creatorImage:
+        'https://media-exp1.licdn.com/dms/image/C4E03AQGr2JhwHUAbXg/profile-displayphoto-shrink_400_400/0/1593014512052?e=1619654400&v=beta&t=md-8FwRQqKxWwMj259C9iOXYBHycHeBp94YqDEvQPTI'
     })
   ])
 

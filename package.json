@@ -69,7 +69,9 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "sequelize": "^5.3.1",
-    "socket.io": "^2.2.0"
+    "simple-peer": "^9.9.3",
+    "socket.io": "^2.2.0",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",

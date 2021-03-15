@@ -9,7 +9,7 @@ import './home.css'
  * COMPONENT
  */
 export const Home = props => {
-  const {rooms, userId, userImage, fetchRooms, enterRoom} = props
+  const {rooms, userId, fetchRooms, enterRoom} = props
 
   useEffect(
     () => {
@@ -28,10 +28,9 @@ export const Home = props => {
         return (
           <div key={room.id} className="single-room-container">
             <div className="room-image-title">
-              <img src={userImage} alt="" />
+              <img src={room.creatorImage} alt="" />
               <h4 className="room-title">{room.title}</h4>
               <div className="room-listeners">
-                <img style={{left: -130}} src={userImage} alt="" />
                 <img
                   style={{left: -110}}
                   src="http://www.crybabyco.com/wp-content/uploads/2018/03/IMG_20180301_001330_396.jpg"
@@ -88,8 +87,7 @@ export const Home = props => {
 const mapState = state => {
   return {
     rooms: state.rooms,
-    userId: state.user.id,
-    userImage: state.user.profilePicture
+    userId: state.user.id
   }
 }
 

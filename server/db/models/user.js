@@ -41,7 +41,7 @@ const User = db.define('user', {
     type: Sequelize.TEXT,
     allowNull: true,
     defaultValue:
-      'https://www.vippng.com/png/detail/363-3631840_profile-icon-png-profile-icon-png-white-transparent.png'
+      'https://www.searchpng.com/wp-content/uploads/2019/02/Profile-ICon.png'
   },
   website: {
     type: Sequelize.TEXT,

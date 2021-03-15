@@ -50,6 +50,7 @@ export class UserProfile extends React.Component {
     console.log(
       'REMINDER: The three dots part is in process of being built as well.'
     )
+
     return (
       <header className="profile-container">
         <div className="settings-icon" ref={this.container}>

@@ -45,6 +45,7 @@ class Routes extends Component {
             <Route exact path="/myrooms" component={MyRooms} />
             <Route exact path="/newroom" component={NewRoom} />
             <Route exact path="/room/:id" component={Room} />
+            {/* <Route exact path="/roomtrial" component={VideoRoom} /> */}
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

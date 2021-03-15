@@ -12,9 +12,6 @@ import './room.css'
 export class Room extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      streams: new Set()
-    }
     this.onJoin = this.onJoin.bind(this)
   }
 
@@ -22,11 +19,7 @@ export class Room extends React.Component {
     this.props.fetchSingleRoom(this.props.match.params.id)
   }
 
-  onJoin(stream) {
-    this.setState({
-      streams: new Set([...Array.from(this.state.streams), stream])
-    })
-  }
+  onJoin(stream) {}
 
   render() {
     const room = this.props.rooms ? this.props.rooms : {}
@@ -34,7 +27,7 @@ export class Room extends React.Component {
       <div className="outter-room-container">
         <div className="room-container">
           <div className="single-room-header">
-            <img src={this.props.userImage} />
+            <img src={room.creatorImage} />
             <h4>{room.title}</h4>
             <div>+1 more</div>
           </div>
@@ -43,28 +36,20 @@ export class Room extends React.Component {
 
           <div className="single-room-people">
             <div className="single-room-speakers">
-              <h5>On Video ({this.state.streams.size})</h5>
+              <h5>On Video</h5>
               <div className="flexbox">
-                {Array.from(this.state.streams).map(stream => (
-                  <Video
-                    className="single-room-video"
-                    autoPlay
-                    srcObject={stream}
-                  />
-                ))}
+                <VideoRoom roomID={this.props.match.params.id} />
               </div>
             </div>
             <div className="single-room-speakers">
               <h5>Speakers (1)</h5>
               <div className="flexbox">
-                <img src={this.props.userImage} />
+                <img src={room.creatorImage} />
               </div>
             </div>
             <div className="single-room-speakers">
               <h5>Listeners (1)</h5>
-              <div className="flexbox">
-                <img src={this.props.userImage} />
-              </div>
+              <div className="flexbox" />
             </div>
           </div>
 
@@ -77,9 +62,9 @@ export class Room extends React.Component {
           </div>
         </div>
 
-        <div className="container-of-videos">
-          <VideoRoom roomID={this.props.match.params.id} onJoin={this.onJoin} />
-        </div>
+        {/* <div className="container-of-videos">
+          <VideoRoom roomID={this.props.match.params.id} />
+        </div> */}
 
         <Link to="/newroom">
           <button className="start-room-button"> + Start a room</button>
@@ -89,24 +74,21 @@ export class Room extends React.Component {
   }
 }
 
-function Video({srcObject, ...props}) {
-  const refVideo = useRef(null)
+const Video = props => {
+  const ref = useRef()
 
-  useEffect(
-    () => {
-      if (!refVideo.current) return
-      refVideo.current.srcObject = srcObject
-    },
-    [srcObject]
-  )
+  useEffect(() => {
+    props.peer.on('stream', stream => {
+      ref.current.srcObject = stream
+    })
+  }, [])
 
-  return <video ref={refVideo} {...props} />
+  return <video playsInline autoPlay ref={ref} />
 }
 
 const mapState = state => {
   return {
-    rooms: state.rooms,
-    userImage: state.user.profilePicture
+    rooms: state.rooms
   }
 }
 
@@ -118,4 +100,3 @@ const mapDispatch = dispatch => {
 }
 
 export default connect(mapState, mapDispatch)(Room)
-//comment
