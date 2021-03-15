@@ -44,6 +44,7 @@
 
 .profile-icon img {
   border-radius: 25px !important;
+  object-fit: cover;
 }
 
 .profile-icon button {

@@ -105,6 +105,7 @@ form {
 .image-container img {
   border-radius: 25px !important;
   width: 40px;
+  object-fit: cover;
 }
 
 .edit-profile-button {

@@ -29,7 +29,8 @@ module.exports = io => {
       io.to(incoming.target).emit('ice-candidate', incoming.candidate)
     })
 
-    socket.on('disconnect', () => {
+    socket.on('disconnect', userID => {
+      // socket.to(roomId).broadcast.emit('user-disconnected', userID)
       console.log(`Connection ${socket.id} has been disconnected`)
     })
   })

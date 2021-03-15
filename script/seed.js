@@ -16,10 +16,13 @@ async function seed() {
       profilePicture:
         'https://media-exp1.licdn.com/dms/image/C4E03AQGr2JhwHUAbXg/profile-displayphoto-shrink_400_400/0/1593014512052?e=1619654400&v=beta&t=md-8FwRQqKxWwMj259C9iOXYBHycHeBp94YqDEvQPTI',
       website: 'google.com',
-      bio:
-        'ᨏ☼ isleña puerto rico \n full-stack software engineer \n aussie mom kyloanddrogo',
-      joinedRoomId: 2,
-      isAdmin: true
+      bio: `ᨏ☼ isleña puerto rico
+        full-stack software engineer
+        aussie mom @kyloanddrogo`,
+      joinedRoomId: 1,
+      isAdmin: true,
+      speaker: true,
+      listener: false
     }),
     User.create({
       name: 'Jon Ros',
@@ -31,20 +34,10 @@ async function seed() {
       website: 'google.com',
       bio: 'Friendly pal.',
       joinedRoomId: 1,
-      isAdmin: false
+      isAdmin: false,
+      speaker: false,
+      listener: true
     })
-    // User.create({
-    //   name: 'Lola Lalo',
-    //   email: 'lola@email.com',
-    //   password: '123',
-    //   username: 'lolalalo',
-    //   profilePicture:
-    //     'https://www.vippng.com/png/detail/363-3631840_profile-icon-png-profile-icon-png-white-transparent.png',
-    //   website: 'google.com',
-    //   bio: 'Your fav lola.',
-    //   joinedRoomId: 1,
-    //   isAdmin: false
-    // })
   ])
 
   const rooms = await Promise.all([
@@ -70,7 +63,7 @@ async function seed() {
       * No spamming messages`,
       category: 'self care',
       hashtags: '#selflove',
-      creatorId: 2
+      creatorId: 1
     }),
     Room.create({
       title: 'Skincare Myths',
@@ -94,7 +87,7 @@ async function seed() {
       * No spamming messages`,
       category: 'marriage',
       hashtags: '#love',
-      creatorId: 2
+      creatorId: 1
     }),
     Room.create({
       title: 'Women in Tech',
@@ -106,7 +99,7 @@ async function seed() {
       * No spamming messages`,
       category: 'technology',
       hashtags: '#womencancode',
-      creatorId: 2
+      creatorId: 1
     }),
     Room.create({
       title: 'Female and Male Energy',

@@ -39,6 +39,10 @@ router.post('/', async (req, res, next) => {
       creatorId
     })
 
+    const user = await User.findOne({where: {id: req.user.id}})
+    user.speaker = true
+    await user.save()
+
     res.json(newRoom)
   } catch (err) {
     next(err)

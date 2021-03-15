@@ -9,7 +9,7 @@ const VideoRoom = props => {
 
   useEffect(() => {
     navigator.mediaDevices
-      .getUserMedia({audio: true, video: true})
+      .getUserMedia({audio: false, video: true})
       .then(stream => {
         console.log('STARTING STREAM', stream)
         props.onJoin(stream)

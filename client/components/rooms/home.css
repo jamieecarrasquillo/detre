@@ -28,6 +28,7 @@
 .single-room-container img {
   border-radius: 25px !important;
   width: 40px;
+  object-fit: cover;
 }
 
 .start-room-button {
@@ -78,6 +79,7 @@
 
 .room-image-title img {
   height: 40px;
+  object-fit: cover;
 }
 
 .room-title {
@@ -103,6 +105,7 @@
   top: -20px;
   left: -50px;
   border: 1px solid #fffffe !important;
+  object-fit: cover;
 }
 
 .room-listeners-count {
@@ -136,6 +139,7 @@
 @media (max-width: 500px) {
   .room-listeners img {
     display: none;
+    object-fit: cover;
   }
 }
 @media (max-width: 768px) {
