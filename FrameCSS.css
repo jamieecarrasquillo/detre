@@ -1,0 +1,18 @@
+/* .single-canvas-container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 50px;
+  background: #00bfff;
+  box-shadow: 20px 20px 60px #00a2d9, -20px -20px 60px #00dcff;
+} */
+
+.canvas-frame {
+  /* display: flex;
+    justify-content: center;
+    align-items: center; */
+  border-radius: 20px;
+}
