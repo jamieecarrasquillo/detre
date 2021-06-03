@@ -8,8 +8,8 @@ Detre is a Web Clubhouse Clone where users can create video rooms to host live p
 
 ## Demo
 [Heroku](https://detre.herokuapp.com/)
-For demo purposes please sign in with 
 ```
+For demo purposes please sign in with 
 jamie@email.com
 123
 ```
